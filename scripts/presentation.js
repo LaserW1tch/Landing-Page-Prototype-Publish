@@ -30,7 +30,6 @@ export function landingMarkup(config = {}, mapScenes = []) {
   return `<div class="cm-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <header class="cm-masthead">
       <h1>${title}</h1>
-      <div class="cm-flourish" aria-hidden="true"><span></span><svg viewBox="0 0 40 40"><path d="M28 4a17 17 0 1 0 4 28A15 15 0 0 1 28 4Z"/></svg><span></span></div>
     </header>
     <section class="cm-navigation" aria-label="Campaign journals">
       <nav class="cm-links" aria-label="Campaign navigation">${destinations.map(d => `
@@ -39,6 +38,7 @@ export function landingMarkup(config = {}, mapScenes = []) {
           <span class="cm-link-icon">${iconSVG(d.icon)}</span>
           <span class="cm-link-title">${d.name}</span>
           <span class="cm-link-symbol" aria-hidden="true">↗</span>
+          <img class="cm-gothic-frame" src="${MODULE_PATH}/assets/ornaments/gothic-skull-frame.png" alt="" aria-hidden="true">
         </button>`).join('')}
       </nav>
       ${mapScenes.length ? `<div class="cm-map-submenu" aria-label="Choose a map">${mapScenes.map(scene => `<button type="button" class="cm-map-choice" data-cm-open-map="${escapeHTML(scene.id)}">${escapeHTML(scene.name)}</button>`).join('')}</div>` : ''}

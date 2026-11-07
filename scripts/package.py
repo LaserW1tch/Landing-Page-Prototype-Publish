@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 module = json.loads((ROOT / 'module.json').read_text())
 out = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT / 'dist'
 out.mkdir(exist_ok=True)
-target = out / f"{module['id']}-v{module['version']}.zip"
+target = out / f"Landing-Page-Prototype-v{module['version']}.zip"
 files = [ROOT / 'module.json', ROOT / 'README.md']
 files += sorted(ROOT.glob('*.ttf'))
 if (ROOT / 'docs/CAST.md').exists():

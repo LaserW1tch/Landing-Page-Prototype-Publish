@@ -23,9 +23,8 @@ async function createOrRepair({ view }) {
       flags: { [MODULE_ID]: { destination: destination.key } },
       pages: [{ name: destination.name, type: 'text', text: { format: CONST.JOURNAL_ENTRY_PAGE_FORMATS.HTML, content: '' } }]
     });
-    else for (const page of journal.pages) {
-      if (page.type === 'text' && page.text?.content) await page.update({ 'text.content': '' });
-    }
+    // Existing journals belong to the GM. Repair only reconnects them; it must
+    // never rewrite pages or clear content authored since the last install.
     journals[destination.key] = journal.uuid;
   }
   let scene = game.scenes.find(s => s.getFlag(MODULE_ID, 'landing'));

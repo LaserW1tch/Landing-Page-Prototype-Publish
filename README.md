@@ -1,14 +1,16 @@
 # The Crooked Moon — Campaign Landing
 
-A moonlit, gothic landing scene for **Foundry VTT 14.367**, using the supplied village image unchanged. Version 0.3.0 adds rectangular purple mist hover effects and the campaign’s tarot, NPC, and memorial journal content sources. The landing overlay anchors to scene coordinates: title, tint, borders and cards zoom and pan with the background. Crimson Ritual is the supplied heading font. Five cards lead to the campaign destinations:
+A customizable gothic landing scene for **Foundry VTT 14.367**. The landing overlay anchors to scene coordinates, so its title, borders and buttons zoom and pan with the background. Gothic buttons use the supplied ornamental frame over a transparent background. The live Cast page uses a separate readable typeface and live actor data. The landing offers these destinations:
 
-1. The Story So far
+1. The Story So Far
 2. Our Cast of Characters
 3. Important Items, NPCs, and Other Details
 4. The Graveyard
 5. Rules
+6. Quest Log
+7. Maps (configured Scene links)
 
-The Cast destination is a live character gallery. **The Story So Far** and **Rules** are authored native journal pages. Details and Graveyard campaign entries can be edited in their native journals after installation. The old Cast journal is preserved, but its main-page button opens the live view.
+Journal destinations are installed with blank pages for the GM to author. Rebuilding the landing reconnects existing journals without changing their pages or content. Cast opens the live character gallery; Maps opens configured Scenes for the current client.
 
 ## Preview
 
@@ -28,8 +30,8 @@ This is a small campaign-specific module, with **no third-party/community depend
 2. Restart Foundry to discover the module.
 3. Open the desired world and enable **The Crooked Moon — Campaign Landing** in Manage Modules.
 4. Open Configure Settings → The Crooked Moon — Campaign Landing → **Create / Repair Landing**.
-5. The action creates one landing scene, one journal folder and five journals. It views the scene for the GM only. Activate the scene using Foundry’s normal controls when you want to bring players here.
-6. Single-click a card or Tab to it and press Enter/Space. Cast opens the live gallery; the other cards open journals.
+5. The action creates one landing scene, one journal folder and six blank journals. It views the scene for the GM only. Activate the scene using Foundry’s normal controls when you want to bring players here.
+6. Single-click a card or Tab to it and press Enter/Space. Cast opens the live gallery; journal buttons open their blank journals; Maps shows configured Scene links.
 7. On Cast, the GM can use **Manage cast** to choose actors, their order, players and PC pronouns. By default, a fresh world uses non-GM players’ assigned characters automatically. See [Cast setup and live fields](docs/CAST.md).
 
 For The Forge, install using the manifest URL in `module.json`, restart the server, enable the module, then run Create / Repair Landing in the destination world. Local testbed validation does not constitute a separate hosted-Forge test.
