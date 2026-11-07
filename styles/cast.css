@@ -1,0 +1,42 @@
+.cm-cast-header{position:absolute;inset:42px 72px auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px}
+.cm-cast-header h1{font-family:CM Gothic,Georgia,serif;font-size:100px;font-weight:400;line-height:1.1;text-align:center;margin:0;border:0;color:var(--cm-bone);text-shadow:0 3px 14px #000}
+.cm-landing button.cm-cast-control{pointer-events:auto;width:auto;min-height:38px;padding:9px 16px;border:1px solid #8b917373;border-radius:0;background:#061013df;color:var(--cm-bone);font:21px CM Serif,Georgia,serif;line-height:1.2;cursor:pointer;justify-self:start;text-shadow:none}
+.cm-cast-header button:last-child{justify-self:end}
+.cm-landing button.cm-cast-control:hover{border-color:#ded3ab;background:#142126}
+.cm-landing button.cm-cast-control:focus-visible{outline:2px solid #ded3ab;outline-offset:4px}
+.cm-landing button.cm-cast-control:disabled{opacity:.4;cursor:default}
+.cm-cast-body{position:absolute;inset:160px 72px;display:flex;align-items:center;justify-content:center}
+.cm-cast-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:start;gap:28px 24px;width:100%;margin:auto}
+.cm-cast-entry{flex:0 0 calc((100% - (var(--cm-cast-columns) - 1) * 24px) / var(--cm-cast-columns));min-width:0;margin:0}
+.cm-cast-card{height:354px;display:grid;grid-template-columns:43% 57%;border:1px solid #a9a17b8a;box-shadow:0 8px 30px #0008,inset 0 0 0 4px #061013;background:linear-gradient(135deg,#101b1ff5,#030c0ff0);overflow:hidden}
+.cm-landing button.cm-cast-portrait{pointer-events:auto;appearance:none;display:block;position:relative;min-width:0;width:100%;height:100%;padding:0;margin:0;border:0;border-right:1px solid #a9a17b65;border-radius:0;background:#071217;cursor:pointer;overflow:hidden}
+.cm-cast-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:saturate(.72);transition:filter .15s}
+.cm-cast-portrait:hover img{filter:saturate(1)}
+.cm-cast-portrait:focus-visible{outline:2px solid #ded3ab;outline-offset:-5px}
+.cm-cast-details{padding:17px 18px 15px;min-width:0;display:flex;flex-direction:column;overflow:hidden}
+.cm-cast-details header{min-height:58px;text-align:center}
+.cm-cast-details h2{font:400 48px/1.04 CM Gothic,Georgia,serif;color:var(--cm-bone);margin:0;border:0;overflow-wrap:anywhere;text-wrap:balance}
+.cm-cast-pronouns{font:italic 19px/1.25 CM Serif,Georgia,serif;color:#aebdb8;margin:3px 0 0}
+.cm-cast-class{font:20px/1.25 CM Serif,Georgia,serif;text-align:center;margin:8px 0 10px;color:#c6c1a6;overflow-wrap:anywhere;text-wrap:balance;flex:0 0 auto}
+.cm-cast-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px;margin:0;padding-top:10px;border-top:1px solid #a19b6b45;min-height:0;align-content:start}
+.cm-cast-stats div{min-width:0}
+.cm-cast-stats dt{font:14px/1.15 CM Serif,Georgia,serif;letter-spacing:.035em;color:#afbeb7;margin:0 0 3px}
+.cm-cast-stats dd{font:600 27px/1.05 CM Serif,Georgia,serif;color:#e2dcc4;margin:0;overflow-wrap:anywhere}
+.cm-cast-stats [data-cm-stat=speed] dd{font-size:15px;line-height:1.12;overflow-wrap:anywhere}
+.cm-cast-player{font:20px/1.35 CM Serif,Georgia,serif;text-align:center;margin:8px 0 0;color:#ded5bd;text-shadow:0 2px 7px #000;overflow-wrap:anywhere}
+.cm-cast-player [data-cm-field=player-pronouns]{color:#b5c3bc}
+.cm-cast-pagination{position:absolute;bottom:28px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:24px;pointer-events:none;font:20px CM Serif,Georgia,serif}
+.cm-cast-empty{max-width:700px;text-align:center;padding:40px;background:#071217e8;border:1px solid #a9a17b73}
+.cm-cast-empty h2{font:400 72px CM Gothic,Georgia,serif;margin:0 0 14px;border:0}
+.cm-cast-empty p{font:26px/1.4 CM Serif,Georgia,serif;margin:0}
+.cm-cast-unavailable{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px;text-align:center}
+.cm-cast-unavailable h2{font:400 48px CM Gothic,Georgia,serif;border:0}
+.cm-cast-unavailable p{font:23px/1.35 CM Serif,Georgia,serif}
+.cm-cast-config{display:flex;flex-direction:column;gap:12px}
+.cm-cast-config p{margin:0;line-height:1.45}
+.cm-cast-config-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 32px;gap:12px;align-items:end;margin:10px 0}
+.cm-cast-config-row label{display:flex;flex-direction:column;gap:4px}
+.cm-cast-config-row button{height:32px;padding:0}
+.cm-cast-config-hint{font-size:13px;opacity:.85}
+.cm-cast-sharing{margin-top:12px}
+@media(prefers-reduced-motion:reduce){.cm-cast-portrait img{transition:none}}

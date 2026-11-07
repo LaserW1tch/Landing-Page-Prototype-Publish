@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Crooked Moon — Landing Preview</title><link rel="stylesheet" href="styles/landing.css"></head>
+<body class="cm-preview">
+  <img class="cm-preview-bg" src="assets/moonlit-village.png" alt="A deserted village lane beneath a full moon, with dark trees and birds overhead.">
+  <main id="preview" class="cm-landing" aria-label="The Crooked Moon campaign landing"></main>
+  <dialog class="cm-preview-dialog" aria-labelledby="destination-title"><p class="cm-journal-eyebrow">THE CROOKED MOON · CAMPAIGN RECORD</p><h2 id="destination-title"></h2><p>This record is waiting to be written.</p><p>In Foundry, this link opens its own journal entry. We’ll decide its contents next.</p><form method="dialog"><button>Return to the village</button></form></dialog>
+  <script type="module">
+    import { DESTINATIONS, landingMarkup } from './scripts/presentation.js';
+    document.getElementById('preview').innerHTML=landingMarkup();
+    const dialog=document.querySelector('dialog');
+    document.querySelectorAll('[data-cm-destination]').forEach(button=>button.addEventListener('click',()=>{
+      document.getElementById('destination-title').textContent=DESTINATIONS.find(d=>d.key===button.dataset.cmDestination).name;
+      dialog.querySelectorAll('p')[2].textContent=button.dataset.cmDestination==='cast' ? 'The live Cast page reads your character actors inside Foundry. Open testbed to review it, or use Manage cast there to connect your PCs.' : 'In Foundry, this link opens its own journal entry. We’ll decide its contents next.';
+      dialog.showModal();
+    }));
+    dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
+  </script>
+</body>
+</html>
