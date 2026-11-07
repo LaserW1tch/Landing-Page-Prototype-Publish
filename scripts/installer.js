@@ -1,7 +1,5 @@
 import { MODULE_ID, MODULE_PATH, DESTINATIONS } from './presentation.js';
 
-const DEFAULT_TITLE = 'Your Campaign';
-
 let installation;
 
 /** Explicit GM action only. Reuses flagged records and never overwrites journal content. */
@@ -16,7 +14,9 @@ async function createOrRepair({ view }) {
   let folder = game.folders.find(f => f.type === 'JournalEntry' && f.getFlag(MODULE_ID, 'landingFolder'));
   if (!folder) folder = await Folder.create({ name: 'Campaign Records', type: 'JournalEntry', flags: { [MODULE_ID]: { landingFolder: true } } });
   const journals = {};
-  for (const destination of DESTINATIONS) {
+  // Maps is a scene chooser, not a JournalEntry destination. Keep the Cast
+  // placeholder for existing worlds, where it may contain authored notes.
+  for (const destination of DESTINATIONS.filter(destination => !destination.special)) {
     let journal = game.journal.find(j => j.getFlag(MODULE_ID, 'destination') === destination.key);
     if (!journal) journal = await JournalEntry.create({
       name: destination.name, folder: folder.id, ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER },
@@ -28,8 +28,8 @@ async function createOrRepair({ view }) {
     journals[destination.key] = journal.uuid;
   }
   let scene = game.scenes.find(s => s.getFlag(MODULE_ID, 'landing'));
-  const title = game.settings.get(MODULE_ID, 'landingConfig')?.title || DEFAULT_TITLE;
-  const background = game.settings.get(MODULE_ID, 'landingConfig')?.background || `${MODULE_PATH}/assets/moonlit-village.png`;
+  const title = 'Your Campaign';
+  const background = `${MODULE_PATH}/assets/moonlit-village.png`;
   if (!scene) scene = await Scene.create({
     name: title, width: 1920, height: 1200, padding: 0,
     levels: [{ _id: 'crookedMoonLevel', name: title, background: { src: background } }],
@@ -38,9 +38,8 @@ async function createOrRepair({ view }) {
     tokenVision: false, fog: { mode: CONST.FOG_EXPLORATION_MODES.DISABLED }, navigation: true, active: false,
     flags: { [MODULE_ID]: { landing: true, journals } }
   });
-  else await scene.update({ name: title, 'levels.0.name': title });
-  if (scene) await scene.setFlag(MODULE_ID, 'journals', journals);
-  ui.notifications.info(`${title} is ready. Campaign journals are linked.`);
+  else await scene.setFlag(MODULE_ID, 'journals', journals);
+  ui.notifications.info(`${title} is ready. Six campaign journals are linked.`);
   if (view) await scene.view();
   return { scene, journals };
 }

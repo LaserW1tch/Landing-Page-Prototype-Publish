@@ -24,7 +24,7 @@ python3 -m http.server 5174 --bind 0.0.0.0
 
 ## Foundry installation
 
-This is a small campaign-specific module, with **no third-party/community dependencies** and no additional module dependencies. The live Cast statistics target **D&D5e6.0.6**; the landing itself uses core Foundry. It uses a real Foundry Scene, standard JournalEntry documents, ordinary document permissions and core journal sheets. The module supplies the scene-anchored navigation, live Cast view and explicit GM setup actions. It is needed for the five single-click, keyboard-accessible cards; this is not a claim that custom card navigation is built into core Foundry.
+This module has **no third-party/community dependencies** and no additional module dependencies. FXMaster is optional. The live Cast statistics target **D&D5e6.0.6**; the landing itself uses core Foundry. It uses a real Foundry Scene, standard JournalEntry documents, ordinary document permissions and core journal sheets. The module supplies the scene-anchored navigation, live Cast view and explicit GM setup actions. It supplies the single-click, keyboard-accessible navigation; custom card navigation is not built into core Foundry.
 
 1. Copy this directory into `Data/modules/crooked-moon-landing-page/`, keeping `module.json` directly inside that folder. Alternatively extract the supplied release ZIP into `Data/modules/`.
 2. Restart Foundry to discover the module.
@@ -57,6 +57,7 @@ Testbed contains six clearly marked demo actors in **Crooked Moon — Cast Demo*
 - Edit journal contents normally in Foundry. Do not delete module flags unless intentionally detaching a record.
 - The navigation displays only on the flagged landing scene. Switching scenes removes it.
 - The landing illustration is initially framed to fill the viewport. The entire overlay follows native scene zoom and pan, including mousewheel zoom over the cards. Camera zoom does not reflow or detach the layout. Foundry’s central pause graphic is hidden on this scene only; the world’s actual paused state is preserved.
+- Selected background images and videos are assigned to the Foundry Scene itself. The landing UI does not place a second HTML background over the canvas, so canvas effects such as FXMaster particles and filters can render with the scene. FXMaster is optional and is not a module dependency.
 - To temporarily hide the navigation while editing the scene, disable **Show landing navigation** in the module’s client settings. This affects your client only.
 - Disabling the module removes its interactive overlay but preserves the Scene and all journals. Players can still open shared records from the Journal sidebar. Re-enable it to restore the cards.
 - Fonts are bundled locally. Crimson Ritual was supplied by the project owner; its original source file is preserved. Cormorant Garamond and the retained, inactive Grenze Gotisch include their original SIL Open Font License files. No Google Fonts/network request occurs at runtime.

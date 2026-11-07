@@ -27,7 +27,6 @@ function requestCastRefresh() {
 function removeLanding() {
   generation++;
   const root = document.getElementById('crooked-moon-landing');
-  for (const video of root?.querySelectorAll('video[data-object-url]') ?? []) URL.revokeObjectURL(video.dataset.objectUrl);
   root?.remove();
   document.body.classList.remove('cm-landing-active');
 }
@@ -140,7 +139,7 @@ Hooks.once('init', () => {
     async render() {
       const accepted = await foundry.applications.api.DialogV2.confirm({
         window: { title: 'The Crooked Moon — Create / Repair Landing' },
-        content: '<p>Create one landing scene and five journals, or reconnect existing records. Existing journal content and scenes are preserved. New records are readable by all players.</p><p>This views the scene for you only. Use Foundry’s scene activation when ready to bring your players here.</p>',
+        content: '<p>Create one landing scene and six journals, or reconnect existing records. Existing journal content and scene customisation are preserved. New records are readable by all players.</p><p>Maps are configured Scene links and do not create a journal. This views the scene for you only. Use Foundry’s scene activation when ready to bring your players here.</p>',
         yes: { label: 'Create / Repair Landing' }, rejectClose: false
       });
       if (accepted) {
@@ -150,7 +149,7 @@ Hooks.once('init', () => {
       return this;
     }
   }
-  game.settings.registerMenu(MODULE_ID, 'setup', { name: 'Create / Repair Landing', label: 'Create / Repair Landing', hint: 'Create the campaign landing scene and its five journal destinations.', icon: 'fas fa-moon', type: LandingSetup, restricted: true });
+  game.settings.registerMenu(MODULE_ID, 'setup', { name: 'Create / Repair Landing', label: 'Create / Repair Landing', hint: 'Create the campaign landing scene and its six journal records. Maps are Scene links.', icon: 'fas fa-moon', type: LandingSetup, restricted: true });
   class CastSetup extends foundry.applications.api.ApplicationV2 {
     async render() { await configureCast(); return this; }
   }

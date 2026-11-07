@@ -39,35 +39,10 @@ export function applyLandingTypography(root, config = {}) {
 }
 
 export function applyLandingConfig(root, config = {}) {
-  const c = applyLandingTypography(root, config);
-  root.querySelector('.cm-user-background')?.remove();
-  if (c.background) {
-    if (/\.(mp4|webm|ogv|mov)(\?.*)?$/i.test(c.background)) {
-      const video = document.createElement('video');
-      video.className = 'cm-user-background'; video.autoplay = true; video.loop = true;
-      video.muted = true; video.defaultMuted = true; video.playsInline = true;
-      video.setAttribute('autoplay', ''); video.setAttribute('muted', ''); video.setAttribute('playsinline', '');
-      root.prepend(video);
-      const src = /^(https?:|blob:|data:|\/)/i.test(c.background) ? c.background : foundry.utils.getRoute(c.background);
-      fetch(src).then(response => {
-        if (!response.ok) throw new Error(`Background request failed (${response.status})`);
-        return response.blob();
-      }).then(blob => {
-        if (!root.isConnected || video.parentElement !== root) return;
-        const objectUrl = URL.createObjectURL(blob);
-        video.dataset.objectUrl = objectUrl;
-        video.src = objectUrl;
-        return video.play();
-      }).catch(error => {
-        console.error(`${MODULE_ID} | Background video failed`, error, src);
-        if (root.isConnected) ui.notifications.warn('The selected background video could not be loaded.');
-      });
-    } else {
-      const image = document.createElement('div'); image.className = 'cm-user-background';
-      image.style.backgroundImage = `url("${c.background.replace(/["\\]/g, '')}")`;
-      root.prepend(image);
-    }
-  }
+  // Keep all backgrounds on the Foundry Scene canvas. A duplicate HTML image
+  // or video here would cover canvas effects such as FXMaster particles and
+  // sit outside the canvas pipeline used by FXMaster filters.
+  applyLandingTypography(root, config);
 }
 
 export async function configureLanding() {

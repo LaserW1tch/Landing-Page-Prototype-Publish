@@ -2,9 +2,9 @@
   "id": "crooked-moon-landing-page",
   "title": "Landing Page Prototype",
   "description": "A customizable game landing page with configurable navigation and a live actor-backed Cast page.",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "manifest": "https://raw.githubusercontent.com/LaserW1tch/Landing-Page-Prototype-Publish/main/module.json",
-  "download": "https://github.com/LaserW1tch/Landing-Page-Prototype-Publish/releases/download/v0.6.1/Landing-Page-Prototype-v0.6.1.zip",
+  "download": "https://github.com/LaserW1tch/Landing-Page-Prototype-Publish/releases/download/v0.6.2/Landing-Page-Prototype-v0.6.2.zip",
   "compatibility": {
     "minimum": "14",
     "verified": "14.367"

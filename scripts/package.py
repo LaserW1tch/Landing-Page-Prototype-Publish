@@ -15,7 +15,12 @@ files += sorted(ROOT.glob('*.ttf'))
 if (ROOT / 'docs/CAST.md').exists():
     files.append(ROOT / 'docs/CAST.md')
 files += sorted(p for p in (ROOT / 'assets').rglob('*') if p.is_file())
-files += sorted((ROOT / 'scripts').glob('*.js'))
+runtime_scripts = [
+    'cast-config.js', 'cast-data.js', 'cast-page.js', 'installer.js',
+    'landing-config.js', 'module.js', 'open-landing-macro.js',
+    'presentation.js', 'scene-transform.js',
+]
+files += [ROOT / 'scripts' / name for name in runtime_scripts]
 files += sorted((ROOT / 'styles').glob('*.css'))
 with ZipFile(target, 'w', ZIP_DEFLATED) as archive:
     for path in files:
@@ -23,6 +28,7 @@ with ZipFile(target, 'w', ZIP_DEFLATED) as archive:
 with ZipFile(target) as archive:
     assert archive.testzip() is None
     assert all('/backups/' not in n and '/docs/verification/' not in n and '/tests/' not in n for n in archive.namelist())
+    assert not any(n.endswith(('/story-content.js', '/rules-content.js', '/details-content.js', '/graveyard-content.js')) for n in archive.namelist())
 checksum = hashlib.sha256(target.read_bytes()).hexdigest()
 target.with_suffix('.zip.sha256').write_text(f'{checksum}  {target.name}\n')
 print(f'{target}\n{len(files)} runtime files; ZIP verified; SHA-256 {checksum}')
