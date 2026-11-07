@@ -4,7 +4,7 @@ import { sceneOverlayTransform } from './scene-transform.js';
 import { getCastModels } from './cast-data.js';
 import { castMarkup } from './cast-page.js';
 import { configureCast } from './cast-config.js';
-import { DEFAULT_LANDING, applyLandingConfig, configureLanding } from './landing-config.js';
+import { DEFAULT_LANDING, applyLandingConfig, applyLandingTypography, configureLanding } from './landing-config.js';
 
 let generation = 0;
 let currentPage = 'landing';
@@ -47,6 +47,7 @@ export async function renderLanding() {
   root.setAttribute('aria-label', currentPage === 'cast' ? 'Our Cast of Characters' : 'The Crooked Moon campaign landing');
   root.innerHTML = isSelectedMap ? '<button class="cm-map-back" data-cm-map-back type="button">← Back to landing page</button>' : currentPage === 'cast' ? castMarkup(getCastModels(), { page: castPage, isGM: game.user.isGM }) : landingMarkup(configured, (configured.maps || []).map(id => game.scenes.get(id)).filter(Boolean));
   if (isLanding && currentPage === 'landing') applyLandingConfig(root, configured);
+  else if (currentPage === 'cast') applyLandingTypography(root, configured);
   // Buttons sit above the board, so Foundry's board-only wheel handler cannot
   // see wheel events over them. Use the same zoom increments via public pan().
   root.addEventListener('wheel', event => {

@@ -7,7 +7,7 @@ export function castMarkup(models, { page = 0, isGM = false } = {}) {
   const columns = Math.min(3, visible.length || 1);
   return `<div class="cm-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <header class="cm-cast-header">
-      <button type="button" class="cm-cast-control" data-cm-back>← Return to the village</button>
+      <button type="button" class="cm-cast-control" data-cm-back>← Back</button>
       <h1>Our Cast of Characters</h1>
       ${isGM ? '<button type="button" class="cm-cast-control" data-cm-configure>Manage cast</button>' : '<span></span>'}
     </header>

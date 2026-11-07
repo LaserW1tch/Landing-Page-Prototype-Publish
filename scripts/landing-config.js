@@ -23,7 +23,7 @@ function fontFace(name, file) {
   }
 }
 
-export function applyLandingConfig(root, config = {}) {
+export function applyLandingTypography(root, config = {}) {
   const c = { ...DEFAULT_LANDING, ...config };
   if (config.font && !config.titleFont) c.titleFont = config.font;
   if (config.font && !config.buttonFont) c.buttonFont = config.font;
@@ -35,6 +35,11 @@ export function applyLandingConfig(root, config = {}) {
   root.style.setProperty('--cm-user-button-size', `${Number(c.buttonSize)}px`);
   root.style.setProperty('--cm-user-glow', c.glow);
   root.dataset.buttonStyle = STYLES.includes(c.buttonStyle) ? c.buttonStyle : STYLES[0];
+  return c;
+}
+
+export function applyLandingConfig(root, config = {}) {
+  const c = applyLandingTypography(root, config);
   root.querySelector('.cm-user-background')?.remove();
   if (c.background) {
     if (/\.(mp4|webm|ogv|mov)(\?.*)?$/i.test(c.background)) {

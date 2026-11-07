@@ -45,6 +45,8 @@ body.cm-landing-active #pause{display:none}
 .cm-map-route::before{display:none}
 .cm-file-choice{display:flex;gap:8px;align-items:center}.cm-file-choice input{flex:1;min-width:0}.cm-file-choice button{white-space:nowrap}
 .cm-color-swatch{display:inline-block;width:20px;height:20px;margin-left:9px;vertical-align:middle;border-radius:50%;background:var(--cm-swatch);border:1px solid #ddd;box-shadow:0 0 8px var(--cm-swatch)}
+.cm-landing-config{max-height:calc(100dvh - 220px);overflow-y:auto;overscroll-behavior:contain;padding:0 12px 12px 0;scrollbar-width:thin;scrollbar-color:#8c8060 #101416}
+.cm-landing-config::-webkit-scrollbar{width:10px}.cm-landing-config::-webkit-scrollbar-track{background:#101416}.cm-landing-config::-webkit-scrollbar-thumb{background:#8c8060;border:2px solid #101416;border-radius:8px}
 .cm-link-icon{display:block;width:38px;height:38px;margin:12px 0 9px;color:#bdb393;opacity:.9}
 .cm-link-icon svg{width:100%;height:100%}
 .cm-link-title{font-family:var(--cm-button-font,CM Gothic),Georgia,serif;font-weight:400;font-size:var(--cm-user-button-size,clamp(26px,3cqw,42px));line-height:1.08;text-wrap:balance;display:block;max-width:100%}
