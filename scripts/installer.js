@@ -12,7 +12,7 @@ export async function installLanding({ view = true } = {}) {
 
 async function createOrRepair({ view }) {
   let folder = game.folders.find(f => f.type === 'JournalEntry' && f.getFlag(MODULE_ID, 'landingFolder'));
-  if (!folder) folder = await Folder.create({ name: 'Campaign Records', type: 'JournalEntry', flags: { [MODULE_ID]: { landingFolder: true } } });
+  if (!folder) folder = await Folder.create({ name: 'The Crooked Moon — Campaign Records', type: 'JournalEntry', flags: { [MODULE_ID]: { landingFolder: true } } });
   const journals = {};
   // Maps is a scene chooser, not a JournalEntry destination. Keep the Cast
   // placeholder for existing worlds, where it may contain authored notes.
@@ -23,23 +23,26 @@ async function createOrRepair({ view }) {
       flags: { [MODULE_ID]: { destination: destination.key } },
       pages: [{ name: destination.name, type: 'text', text: { format: CONST.JOURNAL_ENTRY_PAGE_FORMATS.HTML, content: '' } }]
     });
+    else if (destination.key === 'details' && journal.name === 'Important Items, NPCs, and Other Details') {
+      await journal.update({ name: destination.name });
+      const page = journal.pages.contents.find(p => p.name === 'Important Items, NPCs, and Other Details');
+      if (page) await page.update({ name: destination.name });
+    }
     // Existing journals belong to the GM. Repair only reconnects them; it must
-    // never rewrite pages or clear content authored since the last install.
+    // never rewrite page content authored since the last install.
     journals[destination.key] = journal.uuid;
   }
   let scene = game.scenes.find(s => s.getFlag(MODULE_ID, 'landing'));
-  const title = 'Your Campaign';
-  const background = `${MODULE_PATH}/assets/moonlit-village.png`;
   if (!scene) scene = await Scene.create({
-    name: title, width: 1920, height: 1200, padding: 0,
-    levels: [{ _id: 'crookedMoonLevel', name: title, background: { src: background } }],
+    name: 'The Crooked Moon — Landing', width: 1920, height: 1200, padding: 0,
+    levels: [{ _id: 'crookedMoonLevel', name: 'Moonlit Village', background: { src: `${MODULE_PATH}/assets/moonlit-village.png` } }],
     initialLevel: 'crookedMoonLevel',
     grid: { type: CONST.GRID_TYPES.GRIDLESS, size: 100, distance: 5, units: 'ft' },
     tokenVision: false, fog: { mode: CONST.FOG_EXPLORATION_MODES.DISABLED }, navigation: true, active: false,
     flags: { [MODULE_ID]: { landing: true, journals } }
   });
   else await scene.setFlag(MODULE_ID, 'journals', journals);
-  ui.notifications.info(`${title} is ready. Six campaign journals are linked.`);
+  ui.notifications.info('The Crooked Moon landing is ready. Six campaign journals are linked.');
   if (view) await scene.view();
   return { scene, journals };
 }

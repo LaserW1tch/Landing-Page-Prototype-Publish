@@ -2,3 +2,5 @@ backups/
 releases/
 docs/verification/
 node_modules/
+
+dist/

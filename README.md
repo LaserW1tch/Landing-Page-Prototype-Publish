@@ -4,7 +4,7 @@ A customizable gothic landing scene for **Foundry VTT 14.367**. The landing over
 
 1. The Story So Far
 2. Our Cast of Characters
-3. Important Items, NPCs, and Other Details
+3. Important Items, NPCs, and Details
 4. The Graveyard
 5. Rules
 6. Quest Log

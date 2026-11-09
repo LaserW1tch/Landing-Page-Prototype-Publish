@@ -149,7 +149,7 @@ Hooks.once('init', () => {
       return this;
     }
   }
-  game.settings.registerMenu(MODULE_ID, 'setup', { name: 'Create / Repair Landing', label: 'Create / Repair Landing', hint: 'Create the campaign landing scene and its six journal records. Maps are Scene links.', icon: 'fas fa-moon', type: LandingSetup, restricted: true });
+  game.settings.registerMenu(MODULE_ID, 'setup', { name: 'Create / Repair Landing', label: 'Create / Repair Landing', hint: 'Create the campaign landing scene and six linked journal records. Maps are Scene links.', icon: 'fas fa-moon', type: LandingSetup, restricted: true });
   class CastSetup extends foundry.applications.api.ApplicationV2 {
     async render() { await configureCast(); return this; }
   }

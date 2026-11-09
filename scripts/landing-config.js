@@ -39,9 +39,9 @@ export function applyLandingTypography(root, config = {}) {
 }
 
 export function applyLandingConfig(root, config = {}) {
-  // Keep all backgrounds on the Foundry Scene canvas. A duplicate HTML image
-  // or video here would cover canvas effects such as FXMaster particles and
-  // sit outside the canvas pipeline used by FXMaster filters.
+  // The selected image/video is assigned to the Foundry Scene background by
+  // the configuration dialog. Keep it on the canvas so canvas effects modules
+  // (including FXMaster particles and filters) render against the visible art.
   applyLandingTypography(root, config);
 }
 
