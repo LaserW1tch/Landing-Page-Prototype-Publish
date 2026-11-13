@@ -1,4 +1,4 @@
-# The Crooked Moon — Campaign Landing
+# LaserW1tch's Landing Page Prototyper 5e
 
 A customizable gothic landing scene for **Foundry VTT 14.367**. The landing overlay anchors to scene coordinates, so its title, borders and buttons zoom and pan with the background. Gothic buttons use the supplied ornamental frame over a transparent background. The live Cast page uses a separate readable typeface and live actor data. The landing offers these destinations:
 
@@ -28,8 +28,8 @@ This module has **no third-party/community dependencies** and no additional modu
 
 1. Copy this directory into `Data/modules/crooked-moon-landing-page/`, keeping `module.json` directly inside that folder. Alternatively extract the supplied release ZIP into `Data/modules/`.
 2. Restart Foundry to discover the module.
-3. Open the desired world and enable **The Crooked Moon — Campaign Landing** in Manage Modules.
-4. Open Configure Settings → The Crooked Moon — Campaign Landing → **Create / Repair Landing**.
+3. Open the desired world and enable **LaserW1tch's Landing Page Prototyper 5e** in Manage Modules.
+4. Open Configure Settings → LaserW1tch's Landing Page Prototyper 5e → **Create / Repair Landing**.
 5. The action creates one landing scene, one journal folder and six blank journals. It views the scene for the GM only. Activate the scene using Foundry’s normal controls when you want to bring players here.
 6. Single-click a card or Tab to it and press Enter/Space. Cast opens the live gallery; journal buttons open their blank journals; Maps shows configured Scene links.
 7. On Cast, the GM can use **Manage cast** to choose actors, their order, players and PC pronouns. By default, a fresh world uses non-GM players’ assigned characters automatically. See [Cast setup and live fields](docs/CAST.md).
